@@ -31,3 +31,4 @@ class Recipe extends Model implements SluggableInterface
     	return $this->belongsTo(User::class);
     }
 }
+

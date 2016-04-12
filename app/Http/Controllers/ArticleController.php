@@ -79,13 +79,15 @@ class ArticleController extends Controller
         
         // update tags
         foreach ($request->tags as $key => $val){
-            $request->tag()->create([
+            $t = new \App\article_tags(array(
                 'article_id' => $article->id,
                 'tag_id' => $key
-            ]);
+            ));
+
+            // Perform save query
+            $t_save = $article->article_tags()->save($t);
         }
-        ##dd($request->tags);
-        
+
         // Set destination path for the image uploads
         $destinationPath = 'uploads';
             

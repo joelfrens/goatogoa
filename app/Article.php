@@ -44,6 +44,14 @@ class Article extends Model implements SluggableInterface
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function article_tags()
+    {
+        return $this->hasMany(article_tags::class);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function category()

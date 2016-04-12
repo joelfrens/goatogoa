@@ -17,6 +17,7 @@ return array(
     'ArticlesTableSeeder' => $baseDir . '/database/seeds/ArticlesTableSeeder.php',
     'Categories' => $baseDir . '/database/migrations/2016_02_06_140409_categories.php',
     'CreateArticleImagesTable' => $baseDir . '/database/migrations/2016_02_06_151111_create_article_images_table.php',
+    'CreateArticleTagsTable' => $baseDir . '/database/migrations/2016_04_12_215542_create_article_tags_table.php',
     'CreateArticlesTable' => $baseDir . '/database/migrations/2016_01_31_235157_create_articles_table.php',
     'CreateIngredientsTable' => $baseDir . '/database/migrations/2016_02_06_141706_create_ingredients_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
