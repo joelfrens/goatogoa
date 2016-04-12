@@ -48,22 +48,24 @@
 
 						<div class="form-group">
 							{!! Form::label('Coordinates', 'X-Coordinate:', ['class' => 'control-label']) !!}
-						    {!! Form::text('xcoordinates', null, ['class' => 'form-control']) !!}
+						    {!! Form::text('xcoordinate', null, ['class' => 'form-control']) !!}
 						</div>
 						
 						<div class="form-group">
 							{!! Form::label('Coordinates', 'Y-Coordinate:', ['class' => 'control-label']) !!}
-						    {!! Form::text('ycoordinates', null, ['class' => 'form-control']) !!}
+						    {!! Form::text('ycoordinate', null, ['class' => 'form-control']) !!}
 						</div>
 
 						<div class="form-group">
 							{!! Form::label('Category', 'Category: ', ['class' => 'control-label']) !!}
-							{!! Form::select('category',array(0 => 'Articles',1 => 'Places' ), 1) !!}
+							{!! Form::select('category_id',$categories, $article->category_id) !!}
 						</div>
 
 						<div class="form-group">
 							{!! Form::label('Tags', 'Tags: ', ['class' => 'control-label']) !!}
-							{!! Form::checkbox('tags',1, true) !!} Places {!! Form::checkbox('tags',0, true) !!} Beaches
+							@foreach ($tags as $tag)
+								{!! Form::checkbox('tags[]', 1, true) !!} {!! $tag !!}
+							@endforeach
 						</div>
 
 						<div class="form-group">
@@ -74,7 +76,13 @@
 
 						<div class="form-group">
 							{!! Form::label('Status', 'Status: ', ['class' => 'control-label']) !!}
-							{!! Form::radio('status',1, true) !!} Active {!! Form::radio('status',0) !!} Disabled
+							@if ($article->status == 1)
+								{!! Form::radio('active',1,true) !!} Active
+								{!! Form::radio('active',0) !!} Disabled
+							@else
+								{!! Form::radio('active',1) !!} Active
+								{!! Form::radio('active',0, true) !!} Disabled
+							@endif
 						</div>
 
 						<div class="form-group">

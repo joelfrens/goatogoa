@@ -17,24 +17,43 @@ class Article extends Model implements SluggableInterface
     ];
 
     protected $fillable = [
-    	'title', 'content', 'active', 'scheduled_on', 'what_you_can_do', 'xcoordinate', 'ycoordinate', 'category_id'
+    	'title',
+        'content',
+        'active',
+        'scheduled_on',
+        'what_you_can_do',
+        'xcoordinate',
+        'ycoordinate',
+        'category_id'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function article_images()
     {
         return $this->hasMany(article_images::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function category()
     {
         return $this->hasOne(Category::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function tag()
     {
         return $this->hasMany(Article::class);

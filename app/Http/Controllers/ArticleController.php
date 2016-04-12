@@ -77,12 +77,21 @@ class ArticleController extends Controller
             'active' => $request->status
         ]);
         
+        // update tags
+        foreach ($request->tags as $key => $val){
+            $request->tag()->create([
+                'article_id' => $article->id,
+                'tag_id' => $key
+            ]);
+        }
+        ##dd($request->tags);
+        
         // Set destination path for the image uploads
         $destinationPath = 'uploads';
             
         // Multiple images input
         $files = \Input::file('image');
-
+    
         // Upload images
         $id = $article->id;
         $uploaded = $this->uploadImages($files,$id,$article);
@@ -113,10 +122,19 @@ class ArticleController extends Controller
 
         // Get images
         $images = \App\article_images::where('article_id', $id)->get();
-        
+        //dd($article);
+
+        // Get all categories
+        $categories = \App\Category::lists('name','id');
+
+        // Get all tags
+        $tags = \App\Tag::lists('name','id');
+
         //Return the article details to the view
         return view('articles.edit')->with('article',$article)
-                                    ->with('images',$images);
+                                    ->with('images',$images)
+                                    ->with('categories',$categories)
+                                    ->with('tags',$tags);
 
     }
 
@@ -143,7 +161,7 @@ class ArticleController extends Controller
 
         // Request all inputs
         $input = $request->all();
-
+        //dd($input);
         // Save the input
         $article->fill($input)->save();
 
@@ -168,7 +186,7 @@ class ArticleController extends Controller
      *
      * @return Redirects to articles page 
      */
-    public function destroy(Request $request, 
+    public function destroy(Request $request,
                             \App\Article $article){
 
         // Authorisation to make sure that the owner is deleting the article

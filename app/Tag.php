@@ -19,6 +19,9 @@ class Tag extends Model implements SluggableInterface
     	'name'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function article()
     {
     	return $this->belongsToMany(Article::class);

@@ -19,6 +19,9 @@ class Category extends Model implements SluggableInterface
     	'name'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function article()
     {
     	return $this->belongsTo(Article::class);

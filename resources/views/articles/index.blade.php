@@ -59,15 +59,9 @@
 
 						<div class="form-group">
 							{!! Form::label('Tags', 'Tags:', ['class' => 'control-label']) !!}
-								
-
-								@foreach ($tags as $tag)  
-									
-									{!! Form::checkbox($tag, 1, true) !!} {!! $tag !!}
-								@endforeach
-							
-
-							
+							@foreach ($tags as $tag)
+								{!! Form::checkbox('tags[]', 1, true) !!} {!! $tag !!}
+							@endforeach
 						</div>
 
 						<div class="form-group">

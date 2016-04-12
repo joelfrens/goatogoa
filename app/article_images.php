@@ -11,6 +11,9 @@ class article_images extends Model
     	'article_id', 'image'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function articles()
     {
         return $this->belongsTo(Article::class);

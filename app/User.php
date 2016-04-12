@@ -24,11 +24,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function article()
     {
         return $this->hasMany(Article::class);
     }
-    
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function recipe()
     {
         return $this->hasMany(Recipe::class);

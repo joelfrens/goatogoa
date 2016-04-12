@@ -124,7 +124,7 @@ class CategoryController extends Controller
      *
      * @return Redirects to categorys page 
      */
-    public function destroy(Request $request, 
+    public function destroy(Request $request,
                             \App\Category $category){
 
         // Delete category
